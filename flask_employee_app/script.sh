@@ -1,7 +1,7 @@
 # Initialiser la base de données
-flask db init || true
-flask db migrate -m "Migration initiale"
-flask db upgrade
+sudo flask db init || true
+sudo flask db migrate -m "Migration initiale"
+sudo flask db upgrade
 
 # Lancer l'application Flask
-python3 manage.py
+#python3 manage.py
