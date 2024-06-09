@@ -30,7 +30,7 @@ git clone https://github.com/anis-metref/python-web-app.git
     
 
 ```cpp
-cd Python-flask-App/flask_employee_app/
+cd python-web-app/flask_employee_app/
 
 ```
 
