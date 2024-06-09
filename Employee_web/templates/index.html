@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Employee List</h1>
+        <div class="table-container">
+          <table class="table is-striped is-fullwidth">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>First Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Position</th>
+                <th>Created At</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for employee in employees %}
+              <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.first_name }}</td>
+                <td>{{ employee.phone }}</td>
+                <td>{{ employee.address }}</td>
+                <td>{{ employee.city }}</td>
+                <td>{{ employee.position }}</td>
+                <td>{{ employee.created_at.strftime('%Y-%m-%d') }}</td>
+                <td>
+                  <a class="button is-warning is-small" href="/edit_employee/{{ employee.id }}">Edit</a>
+                  <form action="/delete_employee/{{ employee.id }}" method="post" style="display:inline;">
+                    <button class="button is-danger is-small" type="submit">Delete</button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <h2 class="title">Add a new employee</h2>
+        <form action="/add_employee" method="post">
+          <div class="field">
+            <label class="label" for="name">Name</label>
+            <div class="control">
+              <input class="input" type="text" id="name" name="name" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="first_name">First Name</label>
+            <div class="control">
+              <input class="input" type="text" id="first_name" name="first_name" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="phone">Phone</label>
+            <div class="control">
+              <input class="input" type="text" id="phone" name="phone">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="address">Address</label>
+            <div class="control">
+              <input class="input" type="text" id="address" name="address">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="city">City</label>
+            <div class="control">
+              <input class="input" type="text" id="city" name="city">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="position">Position</label>
+            <div class="control">
+              <input class="input" type="text" id="position" name="position" required>
+            </div>
+          </div>
+          <div class="control">
+            <button class="button is-primary" type="submit">Add Employee</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
